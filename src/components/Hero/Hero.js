@@ -94,6 +94,8 @@ const swiperRef = useRef(null);
 
       {/* Hero Content */}
       <div className=" main_ct_box ">
+        <div className="main_ct_contentin">
+
         <p className="sub-title mb-3">Get unforgettable pleasure with us</p>
         <h1 className="sec-title display-4 fw-bold mb-3">
           Explore the world with Enlive and create stories worth sharing.
@@ -143,9 +145,10 @@ const swiperRef = useRef(null);
             </ul>
           )}
         </div>
+        </div>
 
         {/* Stats Row */}
-         <div className=" statsas container mt-5">
+         <div className=" statsas container-fluid mt-5">
           <div className="row text-center">
             <div className="col-md-4">
               <div style={{height:"80px"}}>

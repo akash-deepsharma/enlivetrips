@@ -129,10 +129,14 @@
     transform: translate(-50% , -50%);
     /* height: 100%; */
     width: 100%;
-    max-width: 800px;
     margin: auto;
     z-index: 2;
 
+}
+.main_ct_contentin{
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
 }
 .main_ct_box .sub-title {
     color: #ffffff;

@@ -8,22 +8,22 @@ import { faClock, faUser } from "@fortawesome/free-regular-svg-icons";
 import { useEffect } from "react";
 
 export default function Header() {
-  useEffect(() => {
-  const cursor = document.querySelector(".cursor-follower");
-  const handleMouseMove = (e) => {
-    cursor.style.top = `${e.clientY}px`;
-    cursor.style.left = `${e.clientX}px`;
-  };
-  window.addEventListener("mousemove", handleMouseMove);
-  return () => window.removeEventListener("mousemove", handleMouseMove);
-}, []);
+//   useEffect(() => {
+//   const cursor = document.querySelector(".cursor-follower");
+//   const handleMouseMove = (e) => {
+//     cursor.style.top = `${e.clientY}px`;
+//     cursor.style.left = `${e.clientX}px`;
+//   };
+//   window.addEventListener("mousemove", handleMouseMove);
+//   return () => window.removeEventListener("mousemove", handleMouseMove);
+// }, []);
   return (
   <>
   
-  <div className="cursor-follower"></div>
-    <div className="slider-drag-cursor">
+  {/* <div className="cursor-follower"></div> */}
+    {/* <div className="slider-drag-cursor">
       <FontAwesomeIcon icon={faAngleLeft} className="me-2"/> DRAG <FontAwesomeIcon icon={faAngleRight} className=" ms-2"/>
-    </div>
+    </div> */}
     <header className="th-header header-layout1">
       {/* 🔹 Header Top */}
       <div className="header-top">
