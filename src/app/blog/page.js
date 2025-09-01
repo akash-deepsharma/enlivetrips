@@ -83,7 +83,7 @@ export default function Blog() {
   ];
 
   // ✅ Pagination logic
-  const postsPerPage = 4;
+  const postsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(blogPosts.length / postsPerPage);
@@ -123,10 +123,10 @@ export default function Blog() {
         <div className="container">
           <div className="row">
             {/* Blog List */}
-            <div className="col-xxl-8 col-lg-7">
+            <div className="col-xxl-12 col-lg-12">
                 <div className="row">
               {currentPosts.map((post) => (
-                    <div className="col-xxl-6 col-lg-6"  key={post.id}>
+                    <div className="col-xxl-4 col-lg-4 col-md-6"  key={post.id}>
                         <SingleBlog post={post} />
                     </div>
               ))}
@@ -175,9 +175,9 @@ export default function Blog() {
             </div>
 
             {/* Sidebar */}
-            <div className="col-xxl-4 col-lg-5">
+            {/* <div className="col-xxl-4 col-lg-5">
               <aside className="sidebar-area">
-                {/* Search */}
+                
                 <div className="widget widget_search">
                   <form className="search-form">
                     <input type="text" placeholder="Search" />
@@ -187,7 +187,7 @@ export default function Blog() {
                   </form>
                 </div>
 
-                {/* Categories */}
+                
                 <div className="widget widget_categories">
                   <h3 className="widget_title">Categories</h3>
                   <ul>
@@ -200,7 +200,7 @@ export default function Blog() {
                   </ul>
                 </div>
               </aside>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
