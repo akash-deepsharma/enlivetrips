@@ -89,7 +89,7 @@ export default function Header() {
                     <Image
                       src="/img/logo.svg"
                       alt="Tourm"
-                      width={220}
+                      width={240}
                       height={80}
                       />
                   </Link>

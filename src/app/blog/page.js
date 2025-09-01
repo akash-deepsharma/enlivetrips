@@ -83,7 +83,7 @@ export default function Blog() {
   ];
 
   // ✅ Pagination logic
-  const postsPerPage = 9;
+  const postsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(blogPosts.length / postsPerPage);

@@ -7109,18 +7109,17 @@ ol.wp-block-rss {
   position: absolute;
   top: 0;
   left: 0;
-  width: 19%;
-  height: 92px;
+  width: -webkit-fill-available;
+  height: 100%;
   z-index: -1;
   background-color: var(--theme-color);
   -webkit-mask-image: url('/img/logo_bg_mask.png');
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
+  -webkit-mask-position: left;
   -webkit-mask-size: contain;
-
   mask-image: url('/img/logo_bg_mask.png');
   mask-repeat: no-repeat;
-  mask-position: center;
+  mask-position: left;
   mask-size: contain;
 }
 @media (min-width: 1930px) {
