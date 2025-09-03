@@ -11,14 +11,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { CategoriesCard } from "./CategoriesCard";
 import { homeTrips } from "@/services/tripsApi";
 
-const CurveSlider = () => {
-  const [images, setImages] = useState([
-    { image: "/img/category/category_1_1.jpg", title: "Cruises" },
-    { image: "/img/category/category_1_2.jpg", title: "Hiking" },
-    { image: "/img/category/category_1_3.jpg", title: "Airbirds" },
-    { image: "/img/category/category_1_4.jpg", title: "Wildlife" },
-    { image: "/img/category/category_1_5.jpg", title: "Walking" },
-  ]);
+const CurveSlider = ({trips}) => {
 
   const [loading, setLoading] = useState(true);
   const swiperRef = useRef(null);
@@ -103,26 +96,7 @@ const CurveSlider = () => {
       > 
         {trips.map((item, index) => (
             <SwiperSlide key={index}>
-              <CategoriesCard image={item.image} title={item.title} />
-              {/* <div className="category-card single">
-                <div
-                  className="box-img global-img position-relative"
-                  style={{ width: "100%", height: "250px" }}
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-fit-cover w-100 h-100"
-                  />
-                </div>
-                <h3 className="box-title">
-                  <Link href="destination">{item.title}</Link>
-                </h3>
-                <Link href="destination" className="line-btn">
-                  See more
-                </Link>
-              </div> */}
+              <CategoriesCard image={item.thumbnail} title={item.heading} slug={item.slug} />
             </SwiperSlide>
           ))}
       </Swiper>
