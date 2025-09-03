@@ -4,19 +4,7 @@ import { useSelector } from 'react-redux';
 // import './notes.css';
 
 export default function RelatedYoutube() {
-//   const tourData = useSelector((state) => state.tours.tours);
-//   const [youtubeVideos, setYoutubeVideos] = useState([]);
 
-//   useEffect(() => {
-//     // Assuming the youtube data is inside tourData.youtube
-//     setYoutubeVideos(tourData?.youtube || []);
-//     // console.log("related youtube videos", tourData?.youtube);
-//   }, [tourData]);
-
-//   // If there are no videos, return null to not render the section
-//   if (youtubeVideos.length === 0) {
-//     return null;
-//   }
 const embad =[
     {
     video: `<iframe width="100%" height="250" src="https://www.youtube.com/embed/hYsQMHECt7k" title="BSF 🇮🇳Aarakshak ⚔️Rajeev Kumar #army #bsf #soilders #bsfparade #shortvideo #shorts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
