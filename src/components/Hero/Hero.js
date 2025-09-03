@@ -93,7 +93,7 @@ const swiperRef = useRef(null);
       <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 z-1"></div>
 
       {/* Hero Content */}
-      <div className=" main_ct_box ">
+      <div className=" main_ct_box  px-3">
         <div className="main_ct_contentin">
 
         <p className="sub-title mb-3">Get unforgettable pleasure with us</p>
@@ -126,7 +126,7 @@ const swiperRef = useRef(null);
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="btn btn-success position-absolute top-50 end-0 translate-middle-y rounded-pill px-4">
+          <button className="btn btn-success position-absolute top-50 end-0 translate-middle-y rounded-pill px-4 h-100">
             {/* <FaSearch /> */}
             <FontAwesomeIcon icon={faSearch}/>
           </button>
@@ -149,8 +149,8 @@ const swiperRef = useRef(null);
 
         {/* Stats Row */}
          <div className=" statsas container-fluid mt-5">
-          <div className="row text-center">
-            <div className="col-md-4">
+          <div className="row justify-content-center text-center">
+            <div className="col-md-4 col-6">
               <div style={{height:"80px"}}>
 
               <Image src="/img/icon/owll.png" alt="Owl" width={96} height={80} />
@@ -158,7 +158,7 @@ const swiperRef = useRef(null);
               <h3><CountUp end={34000} duration={3} />+</h3>
               <p>Reviews</p>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4  col-6">
               <div style={{height:"80px"}}>
               <Image src="/img/icon/facebook.png" alt="Facebook" width={56} height={80} />
 
@@ -166,7 +166,7 @@ const swiperRef = useRef(null);
               <h3><CountUp end={600} duration={3} />+</h3>
               <p>Reviews</p>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4  col-6">
               <div style={{height:"80px"}}>
 
               <Image src="/img/icon/google.png" alt="Facebook" width={56} height={80} />

@@ -7,6 +7,7 @@ import AboutSection from "@/components/AboutSection/AboutSection";
 import TestimonialSection from "@/components/TestimonialSection/TestimonialSection";
 import BlogSection from "@/components/BlogSection/BlogSection";
 import Popup from "@/components/HelpingCompnents/Popup";
+import PopularTour from "@/components/PopularTour/PopularTour";
 
 export default function Home() {
   return (
@@ -15,6 +16,8 @@ export default function Home() {
       <Hero />
       <TourCategories />
       <PopularDestination />
+      
+      <PopularTour/>
       <AboutSection />
       <TestimonialSection />
       <BlogSection />

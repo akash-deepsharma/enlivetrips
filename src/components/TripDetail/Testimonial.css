@@ -1,0 +1,197 @@
+.testinomul_card .content-box{
+    display: none;
+    transition: 0.3s;
+}
+.testinomul_card:hover .content-box{
+    display: block;
+    transition: 0.2s;
+}
+.testinomul_card:hover .content-view{
+    display: none;
+}
+.testimonial-sec h2{
+    font-size: 64px;
+    font-weight: 400;
+    font-family: "Bebas Neue", sans-serif; 
+}
+
+
+
+.tetimonial-conte .swiper {
+    width: 100%;
+    height: 450px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .tetimonial-conte .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .tetimonial-conte .swiper-pagination-bullet{
+    border:2px solid red;
+
+  }
+  .tetimonial-conte .swiper-pagination-vertical{
+    border:2px solid green;
+    display: flex;
+    bottom:0;
+
+  }
+
+
+  /*  */
+
+  /* .marquee-wrapper{
+    background:transparent;
+    text-align:center;
+  }
+  .marquee-wrapper .container{
+    overflow:hidden;
+   
+    text-align:center;
+  }
+  .marquee-inner span{
+    height:50%;
+  }
+  .marquee-wrapper .marquee-block{
+    width: 100%;
+    height: 500px;
+    box-sizing: border-box;
+    position: relative;
+  
+    background:transparent;
+  
+    float:left;
+  }
+  .marquee-inner{
+    display: block;
+    height: 100%;
+    width:100%;
+    position: absolute;
+    margin:20px 0 20px 70px;
+  }
+  
+  .marquee-inner.to-left{
+    animation: marqueeTop 10s linear infinite;
+  }
+  .marquee-inner.to-right{
+    animation: marqueeBottom 25s linear infinite;
+  }
+  .marquee-item{
+    width: 100%;
+    height: 130px;
+    display: block;
+    margin:10px;
+    transition: all .2s ease-out;
+    background:transparent;
+  }
+  @keyframes marqueeTop{
+    0% {
+      top: 0;
+    }
+    100% {
+      top: -100%;
+    }
+  }
+  @keyframes marqueeBottom{
+    0% { 
+      top: -100%; 
+    }
+    100% {
+     top: 0; 
+    }
+  }
+   */
+
+
+
+  .marquee-wrapper .container{
+    overflow:hidden;
+    text-align:center;
+  
+    
+  }
+  .marquee-inner span{
+    height:50%;
+  }
+  .marquee-wrapper .marquee-block{
+    width: 100%;
+    height: 620px;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    padding: 30px 0;
+    float:left;
+  }
+  .marquee-inner{
+    display: block;
+    height: 100%;
+    width:100%;
+    position: absolute;
+  }
+
+  .marquee-inner.to-left:hover{
+    animation-play-state: paused;
+    cursor: pointer;
+  }
+
+  .marquee-inner.to-left{
+    animation: marqueeTop 10s linear infinite;
+  }
+  /* .marquee-inner.to-right{
+    animation: marqueeBottom 25s linear infinite;
+  } */
+  .marquee-item{
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-bottom:10px;
+    transition: all .2s ease-out;
+ 
+  }
+  @keyframes marqueeTop{
+    0% {
+      top: 0;
+    }
+    100% {
+      top: -100%;
+    }
+  }
+  @keyframes marqueeBottom{
+    0% { 
+      top: -100%; 
+    }
+    100% {
+     top: 0; 
+    }
+  }
+  
+  .reviewssecDetail h1{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left ;
+    padding-left: 8px;
+    margin-bottom: 8px;
+  }
+  .reviewssecDetail  .container{
+    padding: 4px;
+  }
+  .reviewssecDetail .tetimonial-conte{
+    padding: 8px 0;
+    margin: 16px 0;
+    border-radius: 8px;
+  }
+  .reviewssecDetail .marquee-wrapper .marquee-block {
+    height: 475px;
+}
+

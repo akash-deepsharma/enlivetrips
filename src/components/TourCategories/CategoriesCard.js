@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 
 export const CategoriesCard = ({ image, title }) => {
-    console.log("CategoriesCard" , image)
+    // console.log("CategoriesCard" , image)
   return (
     // <div className="destination-box gsap-cursor">
     //   <div

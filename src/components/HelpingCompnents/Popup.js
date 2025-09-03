@@ -85,14 +85,11 @@ const Popup = () => {
                 </div>
 
                 {/* Right Form */}
-                <div className="col-md-6 p-4">
-                  <div className="d-flex justify-content-end">
-                    <button type="button" className="btn btn-light rounded-circle" onClick={() => setIsOpen(false)}>
-                      <FontAwesomeIcon icon={faClose}/>
-                    </button>
-                  </div>
+                <div className="col-md-6 p-4 py-5">
+                 
 
-                  <h4 className="mb-4 border-bottom pb-2 sec-title">Plan your Next Trip</h4>
+                 <div className="">
+                   <h4 className="mb-4 border-bottom pb-2 sec-title">Plan your Next Trip</h4>
 
                   <form className="row g-3" onSubmit={handleSubmit}>
                     <div className="col-md-6">
@@ -194,7 +191,13 @@ const Popup = () => {
                       </button>
                     </div>
                   </form>
+                 </div>
                 </div>
+                 <div className="d-flex justify-content-end position-absolute" style={{top:"16px", right:"16px" }}>
+                    <button type="button" className="btn btn-light rounded-circle" onClick={() => setIsOpen(false)}>
+                      <FontAwesomeIcon icon={faClose}/>
+                    </button>
+                  </div>
               </div>
             </div>
           </div>
