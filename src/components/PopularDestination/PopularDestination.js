@@ -6,32 +6,18 @@ import { Autoplay, EffectCoverflow } from "swiper/modules";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import PopularCard from "./PopularCard";
+import { getPagewithSection } from "@/services/pageSection";
+import { getHomeDestination } from "@/services/destinationApi";
+const mainpage = await getPagewithSection(1, "destination");
+const homeDestination = await getHomeDestination();
 
 export default function PopularDestination() {
-  const [images, setImages] = useState([
-    { image: "/img/destination/destination_1_1.jpg", title: "Maldives", subtitle: "15 Listing" },
-    { image: "/img/destination/destination_1_2.jpg", title: "Thailand", subtitle: "22 Listing" },
-    { image: "/img/destination/destination_1_3.jpg", title: "Belgium", subtitle: "25 Listing" },
-    { image: "/img/destination/destination_1_4.jpg", title: "Island", subtitle: "28 Listing" },
-    { image: "/img/destination/destination_1_5.jpg", title: "Maldives", subtitle: "30 Listing" },
-    { image: "/img/destination/destination_1_3.jpg", title: "Belgium", subtitle: "25 Listing" },
-    { image: "/img/destination/destination_1_4.jpg", title: "Island", subtitle: "28 Listing" },
-    { image: "/img/destination/destination_1_5.jpg", title: "Maldives", subtitle: "30 Listing" },
-  ]);
-
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="position-relative overflow-hidden">
       <div className="container">
         <div className="title-area text-center">
-          <span className="sub-title">Top Destination</span>
-          <h2 className="sec-title">Popular Destination</h2>
+          <span className="sub-title">{mainpage.section[0].data.Text}</span>
+          <h2 className="sec-title">{mainpage.section[1].data.Text}</h2>
         </div>
 
         <Swiper
@@ -58,27 +44,16 @@ export default function PopularDestination() {
           }}
           className="th-slider destination-slider slider-drag-wrap"
         >
-          {loading ? (
-            <SkeletonTheme baseColor="#cccccc" highlightColor="#f7fdffa1">
-              {Array.from({ length: 3 }).map((_, index) => (
-                <SwiperSlide key={index}>
-                  <div className="single text-black">
-                    <Skeleton height={300} width={"100%"} />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </SkeletonTheme>
-          ) : (
-            images.map((item, index) => (
-              <SwiperSlide key={index}>
-                <PopularCard
-                  image={item.image}
-                  title={item.title}
-                  subtitle={item.subtitle}
-                />
-              </SwiperSlide>
-            ))
-          )}
+          {homeDestination.map((item, index) => (
+            <SwiperSlide key={index}>
+              <PopularCard
+                image={item.thumbnail}
+                title={item.name}
+                subtitle={item.packages_count}
+                slug={item.slug}
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>

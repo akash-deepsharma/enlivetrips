@@ -9,7 +9,8 @@ import "swiper/css/pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faSolidStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faRegularStar } from "@fortawesome/free-regular-svg-icons";
-
+import { getPagewithSection } from "@/services/pageSection";
+const mainpage = await getPagewithSection(1,'testimonials');
 const testimonials = [
   {
     id: 1,
@@ -62,12 +63,15 @@ const testimonials = [
 ];
 
 export default function TestimonialSection() {
+  console.log(mainpage.section[0].data.Text)
+  const testimonialss = mainpage.section[2].data.testimonials_items
+  console.log(testimonialss);
   return (
     <section className="testi-area overflow-hidden space" id="testi-sec">
       <div className="container-fluid p-0">
         <div className="title-area mb-20 text-center">
-          <span className="sub-title">Testimonial</span>
-          <h2 className="sec-title">What Client Say About us</h2>
+          <span className="sub-title">{mainpage.section[0].data.Text}</span>
+          <h2 className="sec-title">{mainpage.section[1].data.Text}</h2>
         </div>
 
         <div className="slider-area">
@@ -88,14 +92,14 @@ export default function TestimonialSection() {
             }}
             className="testiSlider1 has-shadow"
           >
-            {testimonials.map((item) => (
-              <SwiperSlide key={item.id}>
+            {testimonialss.map((item,index) => (
+              <SwiperSlide key={index}>
                 <div className="testi-card">
                   <div className="testi-card_wrapper">
                     <div className="testi-card_profile">
                       <div className="testi-card_avater">
                         <Image
-                          src={item.avatar}
+                          src={process.env.NEXT_PUBLIC_MEDIA_PATH + item.image}
                           alt={item.name}
                           width={60}
                           height={60}
@@ -103,7 +107,7 @@ export default function TestimonialSection() {
                       </div>
                       <div className="media-body">
                         <h3 className="box-title">{item.name}</h3>
-                        <span className="testi-card_desig">{item.role}</span>
+                        <span className="testi-card_desig">{item.type}</span>
                       </div>
                     </div>
 
@@ -123,7 +127,7 @@ export default function TestimonialSection() {
                     </div>
                   </div>
 
-                  <p className="testi-card_text">“{item.text}”</p>
+                  <p className="testi-card_text">“{item.content}”</p>
 
                   <div className="testi-card-quote">
                     <Image

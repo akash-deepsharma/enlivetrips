@@ -1,8 +1,9 @@
-"use client";
-
+import { getPagewithSection } from "@/services/pageSection";
 import CurveSlider from "./CurveSlider";
-
-export default function TourCategories() {
+import { homeTrips } from "@/services/tripsApi";
+export default async function TourCategories() {
+  const mainpage = await getPagewithSection(1, "categories");
+  const trips = await homeTrips();
   return (
     <section
       className="category-area bg-top-center py-12"
@@ -11,15 +12,13 @@ export default function TourCategories() {
       <div className="container th-container">
         <div className="title-area text-center">
           <span className="sub-title">
-            Wonderful Place For You
+            {mainpage.section[0].data.Text}
           </span>
-          <h2 className="sec-title">Tour Categories</h2>
+          <h2 className="sec-title">{mainpage.section[1].data.Text}</h2>
         </div>
 
-        {/* Slider */}
-        <CurveSlider />
+        <CurveSlider trips={trips} />
 
-        {/* Pagination (Swiper auto attaches here if enabled) */}
         <div className="slider-pagination mt-6 text-center"></div>
       </div>
     </section>

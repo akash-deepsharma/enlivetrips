@@ -6,10 +6,10 @@ import AboutItem from "./AboutItem";
 import { gsap } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalf } from "@fortawesome/free-solid-svg-icons";
-
+import { getPagewithSection } from "@/services/pageSection";
+const mainpage = await getPagewithSection(1,'trip_with_us');
 export default function AboutSection() {
   const shapesRef = useRef([]);
-
   useEffect(() => {
     // Animate shapes on mount
     shapesRef.current.forEach(shape => {
@@ -36,13 +36,22 @@ export default function AboutSection() {
           <div className="col-xl-6">
             <div className="img-box1">
               <div className="img1 mb-3">
-                <Image src="/img/normal/about_1_1.jpg" alt="About" width={315} height={300} />
+                <Image src={
+                      process.env.NEXT_PUBLIC_MEDIA_PATH +
+                      mainpage.section[0].data.image
+                    } alt="About" width={315} height={300} />
               </div>
               <div className="img2 mb-3">
-                <Image src="/img/normal/about_1_2.jpg" alt="About" width={315} height={300} />
+                <Image src={
+                      process.env.NEXT_PUBLIC_MEDIA_PATH +
+                      mainpage.section[1].data.image
+                    } alt="About" width={315} height={300} />
               </div>
               <div className="img3 mb-3">
-                <Image src="/img/normal/about_1_3.jpg" alt="About" width={315} height={300} />
+                <Image src={
+                      process.env.NEXT_PUBLIC_MEDIA_PATH +
+                      mainpage.section[2].data.image
+                    } alt="About" width={315} height={300} />
               </div>
             </div>
           </div>
@@ -51,34 +60,34 @@ export default function AboutSection() {
           <div className="col-xl-6">
             <div className="ps-xl-4 ms-xl-2">
               <div className="title-area mb-20 pe-xl-5 me-xl-5">
-                <span className="sub-title style1">Let’s Go Together</span>
+                <span className="sub-title style1">{mainpage.section[3].data.Text}</span>
                 <h2 className="sec-title mb-20 pe-xl-5 me-xl-5 heading">
-                  Plan Your Trip With us
+                  {mainpage.section[4].data.Text}
                 </h2>
-                <p className="sec-text mb-30">
-                  There are many variations of passages of available but the
-                  majority have suffered alteration in some form, by injected
-                  hum randomised words which don't look even slightly.
-                </p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: mainpage.section[5].data.rich_text,
+                  }}
+                />
               </div>
 
               <div className="about-item-wrap">
+                {mainpage.section
+                    .slice(6, 8) // 6,7,8 index wale elements lega
+                    .map((item, index) => (
                 <AboutItem
-                  icon="/img/icon/map3.svg"
-                  title="Exclusive Trip"
-                  text="There are many variations of passages of available but the majority."
+                key={index}
+                  icon={process.env.NEXT_PUBLIC_MEDIA_PATH + item.data.section[0].data.image}
+                  title={item.data.section[1].data.Text}
+                  text={item.data.section[2].data.content}
                 />
-                <AboutItem
-                  icon="/img/icon/guide.svg"
-                  title="Professional Guide"
-                  text="There are many variations of passages of available but the majority."
-                />
+                ))}
               </div>
 
               <div className="mt-35">
-                <Link href="/about" className="th-btn style3 th-icon">
-                  Learn More
-                </Link>
+                <Link href={mainpage.section[8].data.button_link} className="th-btn style3 th-icon">
+                    {mainpage.section[8].data.button_label}
+                  </Link>
               </div>
             </div>
           </div>

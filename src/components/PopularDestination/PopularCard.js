@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function PopularCard({ image, title, subtitle }) {
+export default function PopularCard({ image, title, subtitle, slug }) {
   return (
     <div className="destination-box gsap-cursor">
       <div className="destination-img" style={{ width: "100%", height: "636px" }}>
@@ -15,11 +15,11 @@ export default function PopularCard({ image, title, subtitle }) {
         <div className="destination-content">
           <div className="media-left">
             <h4 className="box-title text-white">{title}</h4>
-            <span className="destination-subtitle ">{subtitle}</span>
+            <span className="destination-subtitle ">{subtitle} Pckages</span>
           </div>
           <div className="mt-2">
             <Link
-              href="/trips"
+              href={`/destination/${slug}`}
               className="th-btn style2 th-icon"
             >
               View All

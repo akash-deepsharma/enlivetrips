@@ -1,29 +1,14 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight, faBars, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faClock, faUser } from "@fortawesome/free-regular-svg-icons";
-import { useEffect } from "react";
-
+import { getPagewithSection } from "@/services/pageSection";
+const mainpage = await getPagewithSection(1);
 export default function Header() {
-//   useEffect(() => {
-//   const cursor = document.querySelector(".cursor-follower");
-//   const handleMouseMove = (e) => {
-//     cursor.style.top = `${e.clientY}px`;
-//     cursor.style.left = `${e.clientX}px`;
-//   };
-//   window.addEventListener("mousemove", handleMouseMove);
-//   return () => window.removeEventListener("mousemove", handleMouseMove);
-// }, []);
+
   return (
   <>
-  
-  {/* <div className="cursor-follower"></div> */}
-    {/* <div className="slider-drag-cursor">
-      <FontAwesomeIcon icon={faAngleLeft} className="me-2"/> DRAG <FontAwesomeIcon icon={faAngleRight} className=" ms-2"/>
-    </div> */}
     <header className="th-header header-layout1">
       {/* 🔹 Header Top */}
       <div className="header-top">
@@ -34,11 +19,11 @@ export default function Header() {
                 <ul>
                   <li className="d-none d-xl-inline-block">
                    <FontAwesomeIcon icon={faLocationDot} className="me-1"/>
-                    <span>45 New Eskaton Road, Austria</span>
+                    <span>{mainpage.sections[0].section[0].data.Text}</span>
                   </li>
                   <li className="d-none d-xl-inline-block">
                     <FontAwesomeIcon icon={faClock} className="me-1"/>
-                     <span>Sun to Friday: 8.00 am - 7.00 pm</span>
+                     <span>{mainpage.sections[0].section[1].data.Text}</span>
                   </li>
                 </ul>
               </div>
@@ -47,14 +32,14 @@ export default function Header() {
             {/* 🔹 Right Side */}
             <div className="col-auto">
               <div className="header-right">
-                <div className="currency-menu">
+                {/* <div className="currency-menu">
                   <select className="form-select nice-select">
                     <option defaultValue="">language</option>
                     <option>CNY</option>
                     <option>EUR</option>
                     <option>AUD</option>
                   </select>
-                </div>
+                </div> */}
                 <div className="header-links">
                   <ul>
                     <li className="d-none d-md-inline-block">
@@ -63,12 +48,12 @@ export default function Header() {
                     <li className="d-none d-md-inline-block">
                       <Link href="/contact">Support</Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link href="#login-form" className="popup-content">
                         Sign In / Register
                         <i> <FontAwesomeIcon icon={faUser}/></i>
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -87,9 +72,9 @@ export default function Header() {
                 <div className="header-logo">
                   <Link href="/">
                     <Image
-                      src="/img/logo.svg"
-                      alt="Tourm"
-                      width={240}
+                      src={process.env.NEXT_PUBLIC_MEDIA_PATH+mainpage.sections[1].section[0].data.image}
+                      alt="Enlivetrips"
+                      width={80}
                       height={80}
                       />
                   </Link>
@@ -176,7 +161,7 @@ export default function Header() {
           {/* Background Logo Mask */}
           <div
             className="logo-bg"
-            data-mask-src="/img/logo_bg_mask.png"
+            data-mask-src={process.env.NEXT_PUBLIC_MEDIA_PATH+mainpage.sections[1].section[0].data.image}
             ></div>
         </div>
       </div>

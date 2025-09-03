@@ -9,15 +9,9 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Autoplay, Pagination } from "swiper/modules";
 import { CategoriesCard } from "./CategoriesCard";
+import { homeTrips } from "@/services/tripsApi";
 
-const CurveSlider = () => {
-  const [images, setImages] = useState([
-    { image: "/img/category/category_1_1.jpg", title: "Cruises" },
-    { image: "/img/category/category_1_2.jpg", title: "Hiking" },
-    { image: "/img/category/category_1_3.jpg", title: "Airbirds" },
-    { image: "/img/category/category_1_4.jpg", title: "Wildlife" },
-    { image: "/img/category/category_1_5.jpg", title: "Walking" },
-  ]);
+const CurveSlider = ({trips}) => {
 
   const [loading, setLoading] = useState(true);
 
@@ -86,47 +80,12 @@ const CurveSlider = () => {
           1200: { slidesPerView: 3 },
           1400: { slidesPerView: 5 },
         }}
-      >
-        {loading ? (
-          <SkeletonTheme baseColor="#cccccc" highlightColor="#f7fdffa1">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <SwiperSlide key={index}>
-                <div className="category-card single">
-                  <Skeleton height={250} width={"100%"} />
-                  <h3 className="box-title mt-2">
-                    <Skeleton width={100} />
-                  </h3>
-                  <Skeleton width={80} height={20} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </SkeletonTheme>
-        ) : (
-          images.map((item, index) => (
+      > 
+        {trips.map((item, index) => (
             <SwiperSlide key={index}>
-              <CategoriesCard image={item.image} title={item.title} />
-              {/* <div className="category-card single">
-                <div
-                  className="box-img global-img position-relative"
-                  style={{ width: "100%", height: "250px" }}
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-fit-cover w-100 h-100"
-                  />
-                </div>
-                <h3 className="box-title">
-                  <Link href="destination">{item.title}</Link>
-                </h3>
-                <Link href="destination" className="line-btn">
-                  See more
-                </Link>
-              </div> */}
+              <CategoriesCard image={item.thumbnail} title={item.heading} slug={item.slug} />
             </SwiperSlide>
-          ))
-        )}
+          ))}
       </Swiper>
       <div className="slider-pagination"></div>
     </div>
