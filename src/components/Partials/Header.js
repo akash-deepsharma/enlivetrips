@@ -70,7 +70,7 @@ export default function Header() {
               {/* Logo */}
               <div className="col-auto">
                 <div className="header-logo">
-                  <Link href="/">
+                  <Link href="/" className="relative w-100">
                     <Image
                       src={process.env.NEXT_PUBLIC_MEDIA_PATH+mainpage.sections[1].section[0].data.image}
                       alt="Enlivetrips"
@@ -86,7 +86,7 @@ export default function Header() {
                 <nav className="main-menu d-none d-xl-inline-block">
                   <ul>
                     <li>
-                      <Link className="active" href="/">Treks & Trails</Link>
+                      <Link className="active" href="/trips">Treks & Trails</Link>
                     </li>
                     <li>
                       <Link href="/about">About Us</Link>
@@ -95,13 +95,21 @@ export default function Header() {
                       <Link href="/about">Spiti Valley</Link>
                     </li>
                     <li className="menu-item-has-children">
+                      <Link href="/upcoming-trips">Upcoming Trips</Link>
+                      <ul className="sub-menu">
+                        <li><Link href="destination">All</Link></li>
+                        <li><Link href="/upcoming-trips#jan">Jan</Link></li>
+                        <li><Link href="/upcoming-trips#feb">Feb</Link></li>
+                        <li><Link href="/upcoming-trips#mar">Mar</Link></li>
+                        <li><Link href="/upcoming-trips#apr">Apr</Link></li>
+                        <li><Link href="/upcoming-trips#may">May</Link></li>
+                      </ul>
+                    </li>
+                    <li className="menu-item-has-children">
                       <Link href="/destination">Destination</Link>
                       <ul className="sub-menu">
                         <li><Link href="destination">Destination</Link></li>
-                        <li>
-                          <Link href="destination-details"
-                            >Destination Details</Link>
-                        </li>
+                        <li><Link href="destination-details">Destination Details</Link></li>
                       </ul>
                     </li>
                     {/* <li>

@@ -113,7 +113,7 @@ export default function Hero() {
       <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 z-1"></div>
 
       {/* Hero Content */}
-      <div className=" main_ct_box ">
+      <div className=" main_ct_box  px-3">
         <div className="main_ct_contentin">
           <p className="sub-title mb-3">{mainpage.section[0].data.Text}</p>
           <h1 className="sec-title display-4 fw-bold mb-3">
