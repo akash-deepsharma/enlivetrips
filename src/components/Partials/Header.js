@@ -1,29 +1,13 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight, faBars, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faClock, faUser } from "@fortawesome/free-regular-svg-icons";
-import { useEffect } from "react";
-
+import { getPagewithSection } from "@/services/pageSection";
+const mainpage = await getPagewithSection(1);
 export default function Header() {
-//   useEffect(() => {
-//   const cursor = document.querySelector(".cursor-follower");
-//   const handleMouseMove = (e) => {
-//     cursor.style.top = `${e.clientY}px`;
-//     cursor.style.left = `${e.clientX}px`;
-//   };
-//   window.addEventListener("mousemove", handleMouseMove);
-//   return () => window.removeEventListener("mousemove", handleMouseMove);
-// }, []);
   return (
   <>
-  
-  {/* <div className="cursor-follower"></div> */}
-    {/* <div className="slider-drag-cursor">
-      <FontAwesomeIcon icon={faAngleLeft} className="me-2"/> DRAG <FontAwesomeIcon icon={faAngleRight} className=" ms-2"/>
-    </div> */}
     <header className="th-header header-layout1">
       {/* 🔹 Header Top */}
       <div className="header-top">
@@ -34,11 +18,11 @@ export default function Header() {
                 <ul>
                   <li className="d-none d-xl-inline-block">
                    <FontAwesomeIcon icon={faLocationDot} className="me-1"/>
-                    <span>45 New Eskaton Road, Austria</span>
+                    <span>{mainpage.sections[0].section[0].data.Text}</span>
                   </li>
                   <li className="d-none d-xl-inline-block">
                     <FontAwesomeIcon icon={faClock} className="me-1"/>
-                     <span>Sun to Friday: 8.00 am - 7.00 pm</span>
+                     <span>{mainpage.sections[0].section[1].data.Text}</span>
                   </li>
                 </ul>
               </div>
@@ -47,28 +31,31 @@ export default function Header() {
             {/* 🔹 Right Side */}
             <div className="col-auto">
               <div className="header-right">
-                <div className="currency-menu">
+                {/* <div className="currency-menu">
                   <select className="form-select nice-select">
                     <option defaultValue="">language</option>
                     <option>CNY</option>
                     <option>EUR</option>
                     <option>AUD</option>
                   </select>
-                </div>
+                </div> */}
                 <div className="header-links">
                   <ul>
-                    <li className="d-none d-md-inline-block">
-                      <Link href="/faq">FAQ</Link>
-                    </li>
+                    {mainpage.sections[0].section[2].data.trip_items.map((item,index)=>
+                    (<li className="d-none d-md-inline-block" key={index}>
+                      <Link href={`/trips/${item.slug}`}>{item.heading}</Link>
+                    </li>)
+                    )}
+                    
                     <li className="d-none d-md-inline-block">
                       <Link href="/contact">Support</Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link href="#login-form" className="popup-content">
                         Sign In / Register
                         <i> <FontAwesomeIcon icon={faUser}/></i>
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -82,15 +69,14 @@ export default function Header() {
         <div className="menu-area">
           <div className="container th-container">
             <div className="row align-items-center justify-content-between">
-              {/* Logo */}
               <div className="col-auto">
                 <div className="header-logo">
                   <Link href="/" className="relative w-100">
                     <Image
-                      src="/img/logo.svg"
-                      alt="Tourm"
-                      fill
-                      style={{maxWidth:"100px",left:"8%"}}                      
+                      src={process.env.NEXT_PUBLIC_MEDIA_PATH+mainpage.sections[1].section[0].data.image}
+                      alt="Enlivetrips"
+                      width={80}
+                      height={80}
                       />
                   </Link>
                 </div>
@@ -100,74 +86,16 @@ export default function Header() {
               <div className="col-auto ms-xl-auto">
                 <nav className="main-menu d-none d-xl-inline-block">
                   <ul>
+                    {mainpage.sections[1].section[1].data.trip_items.map((item,index)=>
+                    (<li className="d-none d-md-inline-block" key={index}>
+                      <Link href={`/trips/${item.slug}`}>{item.heading}</Link>
+                    </li>)
+                    )}
                     <li>
-                      <Link className="active" href="/trips">Treks & Trails</Link>
-                    </li>
-                    <li>
-                      <Link href="/about">About Us</Link>
-                    </li>
-                    <li>
-                      <Link href="/about">Spiti Valley</Link>
-                    </li>
-                    <li className="menu-item-has-children">
                       <Link href="/upcoming-trips">Upcoming Trips</Link>
-                      <ul className="sub-menu">
-                        <li><Link href="destination">All</Link></li>
-                        <li><Link href="/upcoming-trips#jan">Jan</Link></li>
-                        <li><Link href="/upcoming-trips#feb">Feb</Link></li>
-                        <li><Link href="/upcoming-trips#mar">Mar</Link></li>
-                        <li><Link href="/upcoming-trips#apr">Apr</Link></li>
-                        <li><Link href="/upcoming-trips#may">May</Link></li>
-                      </ul>
                     </li>
-                    <li className="menu-item-has-children">
+                    <li>
                       <Link href="/destination">Destination</Link>
-                      <ul className="sub-menu">
-                        <li><Link href="destination">Destination</Link></li>
-                        <li><Link href="destination-details">Destination Details</Link></li>
-                      </ul>
-                    </li>
-                    {/* <li>
-                      <Link href="/service">Services</Link>
-                    </li> */}
-                    {/* <li className="menu-item-has-children">
-                      <Link href="/activities">Activities</Link>
-                      <ul className="sub-menu">
-                        <li className="menu-item-has-children">
-                          <Link href="#">Shop</Link>
-                          <ul className="sub-menu">
-                            <li><Link href="shop">Shop</Link></li>
-                            <li>
-                              <Link href="shop-details">Shop Details</Link>
-                            </li>
-                            <li><Link href="cart">Cart Page</Link></li>
-                            <li><Link href="checkout">Checkout</Link></li>
-                            <li><Link href="wishlist">Wishlist</Link></li>
-                          </ul>
-                        </li>
-                        <li><Link href="gallery">Gallery</Link></li>
-                        <li><Link href="tour">Our Tour</Link></li>
-                        <li><Link href="tour-details">Tour Details</Link></li>
-                        <li><Link href="resort">Resort page</Link></li>
-                        <li>
-                          <Link href="resort-details">Resort Details</Link>
-                        </li>
-                        <li><Link href="tour-details">Tour Details</Link></li>
-                        <li><Link href="tour-guide">Tour Guider</Link></li>
-                        <li>
-                          <Link href="tour-guider-details"
-                            >Tour Guider Details</Link>
-                        </li>
-                        <li><Link href="faq">Faq Page</Link></li>
-                        <li><Link href="price">Price Package</Link></li>
-                        <li><Link href="error">Error Page</Link></li>
-                      </ul>
-                    </li> */}
-                    <li>
-                      <Link href="/blog">Blog</Link>
-                    </li>
-                    <li>
-                      <Link href="/contact">Contact Us</Link>
                     </li>
                   </ul>
                 </nav>
@@ -184,7 +112,7 @@ export default function Header() {
           {/* Background Logo Mask */}
           <div
             className="logo-bg"
-            data-mask-src="/img/logo_bg_mask.png"
+            data-mask-src={process.env.NEXT_PUBLIC_MEDIA_PATH+mainpage.sections[1].section[0].data.image}
             ></div>
         </div>
       </div>

@@ -9,17 +9,9 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Autoplay, Pagination } from "swiper/modules";
 import { CategoriesCard } from "./CategoriesCard";
+import { homeTrips } from "@/services/tripsApi";
 
-const CurveSlider = () => {
-  const [images, setImages] = useState([
-    { image: "/img/category/category_1_1.jpg", title: "Cruises" },
-    { image: "/img/category/category_1_2.jpg", title: "Hiking" },
-    { image: "/img/category/category_1_3.jpg", title: "Airbirds" },
-    { image: "/img/category/category_1_4.jpg", title: "Wildlife" },
-    { image: "/img/category/category_1_5.jpg", title: "Walking" },
-    { image: "/img/category/category_1_4.jpg", title: "Wildlife" },
-    { image: "/img/category/category_1_5.jpg", title: "Walking" },
-  ]);
+const CurveSlider = ({trips}) => {
 
   const [loading, setLoading] = useState(true);
   const swiperRef = useRef(null);
@@ -29,7 +21,6 @@ const CurveSlider = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // ✅ Force Swiper update after mount (fixes autoplay/scroll issue)
   useEffect(() => {
     const handle = setTimeout(() => {
       if (swiperRef.current) {
@@ -40,7 +31,6 @@ const CurveSlider = () => {
     return () => clearTimeout(handle);
   }, [loading]);
 
-  // curve effect (wheel)
   const multiplier = { translate: 0.1, rotate: 0.01 };
 
   useEffect(() => {
@@ -101,28 +91,12 @@ const CurveSlider = () => {
           1200: { slidesPerView: 3 },
           1400: { slidesPerView: 5 },
         }}
-      >
-        {loading ? (
-          <SkeletonTheme baseColor="#cccccc" highlightColor="#f7fdffa1">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <SwiperSlide key={index}>
-                <div className="category-card single">
-                  <Skeleton height={250} width={"100%"} />
-                  <h3 className="box-title mt-2">
-                    <Skeleton width={100} />
-                  </h3>
-                  <Skeleton width={80} height={20} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </SkeletonTheme>
-        ) : (
-          images.map((item, index) => (
+      > 
+        {trips.map((item, index) => (
             <SwiperSlide key={index}>
-              <CategoriesCard image={item.image} title={item.title} />
+              <CategoriesCard image={item.thumbnail} title={item.heading} slug={item.slug} />
             </SwiperSlide>
-          ))
-        )}
+          ))}
       </Swiper>
       <div className="slider-pagination"></div>
     </div>

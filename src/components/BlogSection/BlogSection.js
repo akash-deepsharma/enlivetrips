@@ -5,9 +5,10 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { gsap } from "gsap";
-
 import "swiper/css";
 import "swiper/css/pagination";
+import { getPagewithSection } from "@/services/pageSection";
+import { getBlogs } from "@/services/blogApi";
 
 const blogs = [
   {
@@ -59,13 +60,14 @@ const blogs = [
     link: "The-7-amazing-destinations-for-adventure-seekers",
   },
 ];
-
+const mainpage = await getPagewithSection(1,'blogs');
+const blogPosts = await getBlogs();
 export default function BlogSection() {
-     const shapesRef = useRef([]);
+  const shapesRef = useRef([]);
 
   useEffect(() => {
     // Animate shapes on mount
-    shapesRef.current.forEach(shape => {
+    shapesRef.current.forEach((shape) => {
       const top = shape.dataset.top || "0%";
       const left = shape.dataset.left || "0%";
       gsap.set(shape, { top, left, position: "absolute" });
@@ -76,10 +78,13 @@ export default function BlogSection() {
         duration: 3,
         yoyo: true,
         repeat: -1,
-        ease: "sine.inOut"
+        ease: "sine.inOut",
       });
     });
   }, []);
+
+
+
   return (
     <section className="bg-smoke overflow-hidden space" id="blog-sec">
       <div className="container">
@@ -87,8 +92,8 @@ export default function BlogSection() {
           <div className="row align-items-center justify-content-between">
             <div className="col-md-7">
               <div className="title-area mb-md-0">
-                <span className="sub-title">About Us Restaurant</span>
-                <h2 className="sec-title">News & Articles From Tourm</h2>
+                <span className="sub-title">{mainpage.section[0].data.Text}</span>
+                <h2 className="sec-title">{mainpage.section[1].data.Text}</h2>
               </div>
             </div>
             <div className="col-md-auto">
@@ -114,13 +119,13 @@ export default function BlogSection() {
             }}
             className="th-slider has-shadow"
           >
-            {blogs.map((blog) => (
+            {blogPosts.data.map((blog) => (
               <SwiperSlide key={blog.id}>
                 <div className="blog-box th-ani">
                   <div className="blog-img global-img">
                     <Image
-                      src={blog.img}
-                      alt={blog.title}
+                      src={blog.image}
+                      alt={blog.heading}
                       width={500}
                       height={300}
                       className="w-100"
@@ -129,14 +134,16 @@ export default function BlogSection() {
                   <div className="blog-box_content">
                     <div className="blog-meta">
                       <Link className="author" href="blog">
-                        {blog.date}
+                        {blog.created_at}
                       </Link>
-                      <Link href="blog">{blog.readTime}</Link>
                     </div>
                     <h3 className="box-title">
-                      <Link href={blog.link}>{blog.title}</Link>
+                      <Link href={`blog/${blog.slug}`}>{blog.heading}</Link>
                     </h3>
-                    <Link href={`blog/${blog.link}`} className="th-btn style4 th-icon">
+                    <Link
+                      href={`blog/${blog.slug}`}
+                      className="th-btn style4 th-icon"
+                    >
                       Read More
                     </Link>
                   </div>
@@ -146,33 +153,48 @@ export default function BlogSection() {
           </Swiper>
         </div>
 
-         {/* Shapes with GSAP */}
-                <div
-                  className="shape-mockup shape1 d-none d-xl-block"
-                  data-top="12%"
-                  data-left="-16%"
-                  ref={el => shapesRef.current[0] = el}
-                >
-                  <Image src="/img/shape/shape_1.png" alt="shape" width={15} height={15} />
-                </div>
-        
-                <div
-                  className="shape-mockup shape2 d-none d-xl-block"
-                  data-top="20%"
-                  data-left="-16%"
-                  ref={el => shapesRef.current[1] = el}
-                >
-                  <Image src="/img/shape/shape_2.png" alt="shape" width={60} height={60} />
-                </div>
-        
-                <div
-                  className="shape-mockup shape3 d-none d-xl-block"
-                  data-top="14%"
-                  data-left="-10%"
-                  ref={el => shapesRef.current[2] = el}
-                >
-                  <Image src="/img/shape/shape_3.png" alt="shape" width={40} height={40} />
-                </div>
+        {/* Shapes with GSAP */}
+        <div
+          className="shape-mockup shape1 d-none d-xl-block"
+          data-top="12%"
+          data-left="-16%"
+          ref={(el) => (shapesRef.current[0] = el)}
+        >
+          <Image
+            src="/img/shape/shape_1.png"
+            alt="shape"
+            width={15}
+            height={15}
+          />
+        </div>
+
+        <div
+          className="shape-mockup shape2 d-none d-xl-block"
+          data-top="20%"
+          data-left="-16%"
+          ref={(el) => (shapesRef.current[1] = el)}
+        >
+          <Image
+            src="/img/shape/shape_2.png"
+            alt="shape"
+            width={60}
+            height={60}
+          />
+        </div>
+
+        <div
+          className="shape-mockup shape3 d-none d-xl-block"
+          data-top="14%"
+          data-left="-10%"
+          ref={(el) => (shapesRef.current[2] = el)}
+        >
+          <Image
+            src="/img/shape/shape_3.png"
+            alt="shape"
+            width={40}
+            height={40}
+          />
+        </div>
       </div>
     </section>
   );
