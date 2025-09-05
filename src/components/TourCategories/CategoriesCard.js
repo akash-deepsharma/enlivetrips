@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 export const CategoriesCard = ({ image, title, slug }) => {
-    console.log("CategoriesCard" , image)
+    // console.log("CategoriesCard" , image)
   return (
                <div className="category-card single">
                 <div

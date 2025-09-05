@@ -4,26 +4,35 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const monthsData = [
-  { label: "Sep-25", days: [{ date: 2, day: "Tue" }, { date: 6, day: "Sat" }, { date: 10, day: "Wed" }] },
-  { label: "Oct-25", days: [{ date: 2, day: "Thu" }, { date: 3, day: "Fri" }, { date: 4, day: "Sat" }, { date: 6, day: "Mon" }, { date: 10, day: "Fri" }, { date: 11, day: "Sat" }, { date: 14, day: "Tue" }, { date: 16, day: "Thu" }, { date: 18, day: "Sat" }, { date: 23, day: "Thu" }, { date: 24, day: "Fri" }, { date: 25, day: "Sat" }, { date: 26, day: "Sun" }, { date: 31, day: "Fri" }] },
-  { label: "Nov-25", days: [{ date: 5, day: "Wed" }, { date: 10, day: "Mon" }, { date: 15, day: "Sat" }] },
-  { label: "Dec-25", days: [{ date: 1, day: "Mon" }, { date: 12, day: "Fri" }, { date: 25, day: "Thu" }] },
-  { label: "Jan-26", days: [{ date: 5, day: "Mon" }, { date: 14, day: "Wed" }, { date: 20, day: "Tue" }] },
-  { label: "Feb-26", days: [{ date: 2, day: "Mon" }, { date: 10, day: "Tue" }, { date: 28, day: "Sat" }] },
-  { label: "Mar-26", days: [{ date: 2, day: "Mon" }, { date: 10, day: "Tue" }, { date: 18, day: "Tue" }, { date: 28, day: "Sat" }] },
-];
+// const monthsData = [
+//   { label: "Sep-25", days: [
+//     { date: 2, day: "Tue" },
+//     { date: 6, day: "Sat" },
+//     { date: 10, day: "Wed"
 
-export default function MonthDateSlider() {
-  const [currentMonthIndex, setCurrentMonthIndex] = useState(null); // 🚀 no month selected initially
+//      }] },
+//   { label: "Oct-25", days: [{ date: 2, day: "Thu" }, { date: 3, day: "Fri" }, { date: 4, day: "Sat" }, { date: 6, day: "Mon" }, { date: 10, day: "Fri" }, { date: 11, day: "Sat" }, { date: 14, day: "Tue" }, { date: 16, day: "Thu" }, { date: 18, day: "Sat" }, { date: 23, day: "Thu" }, { date: 24, day: "Fri" }, { date: 25, day: "Sat" }, { date: 26, day: "Sun" }, { date: 31, day: "Fri" }] },
+//   { label: "Nov-25", days: [{ date: 5, day: "Wed" }, { date: 10, day: "Mon" }, { date: 15, day: "Sat" }] },
+//   { label: "Dec-25", days: [{ date: 1, day: "Mon" }, { date: 12, day: "Fri" }, { date: 25, day: "Thu" }] },
+//   { label: "Jan-26", days: [{ date: 5, day: "Mon" }, { date: 14, day: "Wed" }, { date: 20, day: "Tue" }] },
+//   { label: "Feb-26", days: [{ date: 2, day: "Mon" }, { date: 10, day: "Tue" }, { date: 28, day: "Sat" }] },
+//   { label: "Mar-26", days: [{ date: 2, day: "Mon" }, { date: 10, day: "Tue" }, { date: 18, day: "Tue" }, { date: 28, day: "Sat" }] },
+// ];
+
+export default function MonthDateSlider({ monthsData, handleDateFilter }) {
+  const [currentMonthIndex, setCurrentMonthIndex] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [currentDayIndex, setCurrentDayIndex] = useState(null);
   const [visibleMonths, setVisibleMonths] = useState(2);
-
   const scrollRef = useRef(null);
   const containerRef = useRef(null);
 
-  // calculate how many months fit in the container
+  useEffect(() => {
+    if (selectedDate != null) {
+      handleDateFilter(selectedDate);
+    }
+  }, [selectedDate]);
+
   useEffect(() => {
     function handleResize() {
       if (containerRef.current) {
@@ -66,15 +75,22 @@ export default function MonthDateSlider() {
     }
   };
 
-  const currentMonth = currentMonthIndex !== null ? monthsData[currentMonthIndex] : null;
+  const currentMonth =
+    currentMonthIndex !== null ? monthsData[currentMonthIndex] : null;
 
   return (
-    <div className="d-flex align-items-center px-5 monthslider" ref={containerRef}>
+    <div
+      className="d-flex align-items-center px-5 monthslider"
+      ref={containerRef}
+    >
       {/* Left Arrow */}
       <button
         className="btn btn-link text-info fs-4 me-2 btn_before"
         onClick={handlePrev}
-        disabled={currentMonthIndex === null || (currentMonthIndex === 0 && currentDayIndex === 0)}
+        disabled={
+          currentMonthIndex === null ||
+          (currentMonthIndex === 0 && currentDayIndex === 0)
+        }
       >
         <FontAwesomeIcon icon={faAngleLeft} />
       </button>
@@ -111,7 +127,7 @@ export default function MonthDateSlider() {
                   currentDayIndex === idx ? "fw-bold text-info" : ""
                 }`}
                 onClick={() => {
-                  setSelectedDate(d.date);
+                  setSelectedDate(d.full_date);
                   setCurrentDayIndex(idx);
                 }}
               >
@@ -126,14 +142,20 @@ export default function MonthDateSlider() {
         {monthsData
           .slice(
             currentMonthIndex !== null ? currentMonthIndex + 1 : 0,
-            currentMonthIndex !== null ? currentMonthIndex + 1 + visibleMonths : visibleMonths
+            currentMonthIndex !== null
+              ? currentMonthIndex + 1 + visibleMonths
+              : visibleMonths
           )
           .map((month, index) => (
             <div
               key={index}
               className="border rounded padding-box ms-2 cursor-pointer box-width"
               onClick={() => {
-                setCurrentMonthIndex(currentMonthIndex !== null ? currentMonthIndex + index + 1 : index);
+                setCurrentMonthIndex(
+                  currentMonthIndex !== null
+                    ? currentMonthIndex + index + 1
+                    : index
+                );
                 setCurrentDayIndex(null);
                 setSelectedDate(null);
               }}

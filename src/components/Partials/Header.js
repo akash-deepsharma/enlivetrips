@@ -6,7 +6,6 @@ import { faClock, faUser } from "@fortawesome/free-regular-svg-icons";
 import { getPagewithSection } from "@/services/pageSection";
 const mainpage = await getPagewithSection(1);
 export default function Header() {
-
   return (
   <>
     <header className="th-header header-layout1">
@@ -42,9 +41,12 @@ export default function Header() {
                 </div> */}
                 <div className="header-links">
                   <ul>
-                    <li className="d-none d-md-inline-block">
-                      <Link href="/faq">FAQ</Link>
-                    </li>
+                    {mainpage.sections[0].section[2].data.trip_items.map((item,index)=>
+                    (<li className="d-none d-md-inline-block" key={index}>
+                      <Link href={`/trips/${item.slug}`}>{item.heading}</Link>
+                    </li>)
+                    )}
+                    
                     <li className="d-none d-md-inline-block">
                       <Link href="/contact">Support</Link>
                     </li>
@@ -67,7 +69,6 @@ export default function Header() {
         <div className="menu-area">
           <div className="container th-container">
             <div className="row align-items-center justify-content-between">
-              {/* Logo */}
               <div className="col-auto">
                 <div className="header-logo">
                   <Link href="/" className="relative w-100">
@@ -85,74 +86,16 @@ export default function Header() {
               <div className="col-auto ms-xl-auto">
                 <nav className="main-menu d-none d-xl-inline-block">
                   <ul>
+                    {mainpage.sections[1].section[1].data.trip_items.map((item,index)=>
+                    (<li className="d-none d-md-inline-block" key={index}>
+                      <Link href={`/trips/${item.slug}`}>{item.heading}</Link>
+                    </li>)
+                    )}
                     <li>
-                      <Link className="active" href="/trips">Treks & Trails</Link>
-                    </li>
-                    <li>
-                      <Link href="/about">About Us</Link>
-                    </li>
-                    <li>
-                      <Link href="/about">Spiti Valley</Link>
-                    </li>
-                    <li className="menu-item-has-children">
                       <Link href="/upcoming-trips">Upcoming Trips</Link>
-                      <ul className="sub-menu">
-                        <li><Link href="destination">All</Link></li>
-                        <li><Link href="/upcoming-trips#jan">Jan</Link></li>
-                        <li><Link href="/upcoming-trips#feb">Feb</Link></li>
-                        <li><Link href="/upcoming-trips#mar">Mar</Link></li>
-                        <li><Link href="/upcoming-trips#apr">Apr</Link></li>
-                        <li><Link href="/upcoming-trips#may">May</Link></li>
-                      </ul>
                     </li>
-                    <li className="menu-item-has-children">
+                    <li>
                       <Link href="/destination">Destination</Link>
-                      <ul className="sub-menu">
-                        <li><Link href="destination">Destination</Link></li>
-                        <li><Link href="destination-details">Destination Details</Link></li>
-                      </ul>
-                    </li>
-                    {/* <li>
-                      <Link href="/service">Services</Link>
-                    </li> */}
-                    {/* <li className="menu-item-has-children">
-                      <Link href="/activities">Activities</Link>
-                      <ul className="sub-menu">
-                        <li className="menu-item-has-children">
-                          <Link href="#">Shop</Link>
-                          <ul className="sub-menu">
-                            <li><Link href="shop">Shop</Link></li>
-                            <li>
-                              <Link href="shop-details">Shop Details</Link>
-                            </li>
-                            <li><Link href="cart">Cart Page</Link></li>
-                            <li><Link href="checkout">Checkout</Link></li>
-                            <li><Link href="wishlist">Wishlist</Link></li>
-                          </ul>
-                        </li>
-                        <li><Link href="gallery">Gallery</Link></li>
-                        <li><Link href="tour">Our Tour</Link></li>
-                        <li><Link href="tour-details">Tour Details</Link></li>
-                        <li><Link href="resort">Resort page</Link></li>
-                        <li>
-                          <Link href="resort-details">Resort Details</Link>
-                        </li>
-                        <li><Link href="tour-details">Tour Details</Link></li>
-                        <li><Link href="tour-guide">Tour Guider</Link></li>
-                        <li>
-                          <Link href="tour-guider-details"
-                            >Tour Guider Details</Link>
-                        </li>
-                        <li><Link href="faq">Faq Page</Link></li>
-                        <li><Link href="price">Price Package</Link></li>
-                        <li><Link href="error">Error Page</Link></li>
-                      </ul>
-                    </li> */}
-                    <li>
-                      <Link href="/blog">Blog</Link>
-                    </li>
-                    <li>
-                      <Link href="/contact">Contact Us</Link>
                     </li>
                   </ul>
                 </nav>

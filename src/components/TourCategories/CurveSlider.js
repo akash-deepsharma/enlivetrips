@@ -21,7 +21,6 @@ const CurveSlider = ({trips}) => {
     return () => clearTimeout(timer);
   }, []);
 
-  // ✅ Force Swiper update after mount (fixes autoplay/scroll issue)
   useEffect(() => {
     const handle = setTimeout(() => {
       if (swiperRef.current) {
@@ -32,7 +31,6 @@ const CurveSlider = ({trips}) => {
     return () => clearTimeout(handle);
   }, [loading]);
 
-  // curve effect (wheel)
   const multiplier = { translate: 0.1, rotate: 0.01 };
 
   useEffect(() => {

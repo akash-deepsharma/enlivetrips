@@ -11,61 +11,9 @@ import { faStar as faSolidStar, faStarHalfStroke } from "@fortawesome/free-solid
 import { faStar as faRegularStar } from "@fortawesome/free-regular-svg-icons";
 import { getPagewithSection } from "@/services/pageSection";
 const mainpage = await getPagewithSection(1,'testimonials');
-const testimonials = [
-  {
-    id: 1,
-    name: "Maria Doe",
-    role: "Traveller",
-    text: "A home that perfectly blends sustainability with luxury until I discovered Ecoland Residence. From the moment I stepped into this community, I knew it was where I wanted to live.",
-    avatar: "/img/testimonial/testi_1_1.jpg",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Andrew Simon",
-    role: "Traveller",
-    text: "The commitment to eco-friendly living really impressed me. It’s not just marketing—it’s genuinely built into the lifestyle here.",
-    avatar: "/img/testimonial/testi_1_2.jpg",
-    rating: 2.5,
-  },
-  {
-    id: 3,
-    name: "Alex Jordan",
-    role: "Traveller",
-    text: "Beautifully designed community with nature at its heart. I finally feel like I belong somewhere sustainable and modern.",
-    avatar: "/img/testimonial/testi_1_1.jpg",
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: "Maria Doe",
-    role: "Traveller",
-    text: "A home that perfectly blends sustainability with luxury until I discovered Ecoland Residence. From the moment I stepped into this community, I knew it was where I wanted to live.",
-    avatar: "/img/testimonial/testi_1_1.jpg",
-    rating: 3,
-  },
-  {
-    id: 5,
-    name: "Andrew Simon",
-    role: "Traveller",
-    text: "The commitment to eco-friendly living really impressed me. It’s not just marketing—it’s genuinely built into the lifestyle here.",
-    avatar: "/img/testimonial/testi_1_2.jpg",
-    rating: 5,
-  },
-  {
-    id: 6,
-    name: "Alex Jordan",
-    role: "Traveller",
-    text: "Beautifully designed community with nature at its heart. I finally feel like I belong somewhere sustainable and modern.",
-    avatar: "/img/testimonial/testi_1_1.jpg",
-    rating: 4,
-  },
-];
 
 export default function TestimonialSection() {
-  console.log(mainpage.section[0].data.Text)
   const testimonialss = mainpage.section[2].data.testimonials_items
-  console.log(testimonialss);
   return (
     <section className="testi-area overflow-hidden space" id="testi-sec">
       <div className="container-fluid p-0">

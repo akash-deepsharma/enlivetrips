@@ -8,6 +8,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import PopularCard from "./PopularCard";
 import { getPagewithSection } from "@/services/pageSection";
 import { getHomeDestination } from "@/services/destinationApi";
+
 const mainpage = await getPagewithSection(1, "destination");
 const homeDestination = await getHomeDestination();
 
