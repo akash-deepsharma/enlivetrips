@@ -29264,7 +29264,7 @@ span.select2-selection.select2-selection--single:focus {
 }
 .popup-login-register {
   width: 100%;
-  max-width: 606px;
+  max-width: 400px;
   display: block;
   margin: auto;
   background: var(--white-color);
@@ -30734,4 +30734,204 @@ span.select2-selection.select2-selection--single:focus {
   position: absolute;
   top:16px;
   right: 16px;
+}
+.min_box-detail{
+  background-color: #ffffff;
+    border-radius: 29px;
+    padding: 24px;
+    box-shadow: 0 0 22px 6px #e7e7e7;
+}
+.min_box-detail .title{
+  position: relative;
+  padding-bottom: 1px;
+}
+.min_box-detail .title::after{
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background-color:#c7c7c7 ;
+}
+.title h6{
+  font-size: 28px;
+  font-weight: 500;
+  color: #212529;
+}
+
+.Age_limit .card .card-body .card-title{
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(33, 37, 41);
+  position: relative;
+  padding-bottom: 16px;
+}
+.Age_limit .card .card-body .card-title::after{
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background-color:#c7c7c7 ;
+}
+.Age_limit .card .card-body .card-text{
+  font-size: 30px;
+  font-weight: 500;
+  color: rgb(33, 37, 41);
+}
+.view_more_less a{
+  font-size: 20px;
+  font-weight: 500;
+}
+.over_vontent li a{
+  font-size: 20px;
+  color: #000000;
+  font-weight: 600;
+}
+.over_vontent li a.active {
+  color: #00a1de;
+}
+.thinagto_pack ul li{
+  display: flex;
+  align-items: center;
+    gap: 16px;
+    padding-left: 0px;
+    margin-bottom: 8px;
+}
+.destination-checklist .thinagto_pack.checklist.style2:last-child{
+  border-left: none;
+}
+.thinagto_pack ul li::before{
+    content: "";
+    display: none;
+}
+.thinagto_pack ul li span{
+  object-fit: cover;
+    background-color: #e5f7eb;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    padding: 16px;
+    display: flex;
+}
+.Title_Ratings .star-vew .tour-rating .star-rating{
+  width: auto;
+  height: auto;
+}
+.Title_Ratings .star-vew .tour-rating .star-rating svg{
+  font-size: 20px;
+}
+.share_btn{
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+.deivn-asd{
+  color: var(--body-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+.detail-section .deta_content .asdcasd{
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.detail-section .deta_content .sadasd{
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 0;
+  color:#000000;
+}
+.detail-section .jtym{
+  background-color: #2125290d;
+  border-radius: 20px;
+}
+.detail-section .jtym img{
+  width: 40px;
+    height: 40px;
+    object-fit: contain;
+    padding: 4px  ;
+}
+
+
+.dates-section {
+  font-family: Arial, sans-serif;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #013900;
+  border-color: #4AD428 !important;
+}
+
+.activity-card {
+  background: transparent;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.activity-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #020a13;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.activity-cost {
+  font-size: 16px;
+  color: #000000;
+}
+
+.date-range {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000cc;
+}
+
+.festival-tag {
+  background: #4ad428;
+  color: #fff;
+  padding: 4px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+
+.trip-hero-img {
+  max-height: 500px;
+  object-fit: cover;
+}
+
+
+/* Green circular icon background */
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #4da528;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 18px;
+  color: white;
 }

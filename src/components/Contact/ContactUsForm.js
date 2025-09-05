@@ -1,6 +1,7 @@
 'use client';
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function ContactUsForm() {
@@ -37,13 +38,11 @@ export default function ContactUsForm() {
           {/* Video Section */}
           <div className="col-lg-6">
             <div className="video-box1">
-              <a
+              <Link
                 href="https://www.youtube.com/watch?v=cQfIUPw72Dk"
-                className="play-btn style2 popup-video" target="_blank"
-              >
+                className="play-btn style2 popup-video" target="_blank">
                 <i className=""> <FontAwesomeIcon icon={faPlay} /></i>
-                
-              </a>
+              </Link>
             </div>
           </div>
 

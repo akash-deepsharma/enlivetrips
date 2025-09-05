@@ -75,7 +75,7 @@ const tours = [
     id: 8,
     title: "Greece Tour Package",
     image: "/img/tour/tour_box_5.jpg",
-    rating: 4.8,
+    rating: 2.8,
     price: 980,
     duration: "7 Days",
     days: ["1 Jun", "5 Jul", "10 Aug"],

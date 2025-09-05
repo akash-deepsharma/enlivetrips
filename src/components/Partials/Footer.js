@@ -62,21 +62,21 @@ export default function Footer() {
                     model. Appropriately create interactive infrastructures
                   </p>
                   <div className="th-social">
-                    <a href="https://facebook.com">
+                    <Link href="https://facebook.com">
                       <FontAwesomeIcon icon={faFacebookF}/>
-                    </a>
-                    <a href="https://twitter.com">
+                    </Link>
+                    <Link href="https://twitter.com">
                       <FontAwesomeIcon icon={faTwitter}/>
-                    </a>
-                    <a href="https://linkedin.com">
+                    </Link>
+                    <Link href="https://linkedin.com">
                       <FontAwesomeIcon icon={faLinkedin}/>
-                    </a>
-                    <a href="https://whatsapp.com">
+                    </Link>
+                    <Link href="https://whatsapp.com">
                       <FontAwesomeIcon icon={faWhatsapp}/>
-                    </a>
-                    <a href="https://instagram.com">
+                    </Link>
+                    <Link href="https://instagram.com">
                       <FontAwesomeIcon icon={faInstagram}/>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -107,8 +107,8 @@ export default function Footer() {
                       <Image src="/img/icon/phone.svg" alt="phone" width={20} height={20}/>
                     </div>
                     <div className="details">
-                      <p><a href="tel:+01234567890">+01 234 567 890</a></p>
-                      <p><a href="tel:+09876543210">+09 876 543 210</a></p>
+                      <p><Link href="tel:+01234567890">+01 234 567 890</Link></p>
+                      <p><Link href="tel:+09876543210">+09 876 543 210</Link></p>
                     </div>
                   </div>
                   <div className="info-box_text">
@@ -116,8 +116,8 @@ export default function Footer() {
                       <Image src="/img/icon/envelope.svg" alt="email" width={20} height={20}/>
                     </div>
                     <div className="details">
-                      <p><a href="mailto:mailinfo00@tourm.com">mailinfo00@tourm.com</a></p>
-                      <p><a href="mailto:support24@tourm.com">support24@tourm.com</a></p>
+                      <p><Link href="mailto:mailinfo00@tourm.com">mailinfo00@tourm.com</Link></p>
+                      <p><Link href="mailto:support24@tourm.com">support24@tourm.com</Link></p>
                     </div>
                   </div>
                   <div className="info-box_text">
@@ -145,13 +145,13 @@ export default function Footer() {
                         width={80}
                         height={80}
                       />
-                      <a
+                      <Link
                         target="_blank"
                         href="https://instagram.com"
                         className="gallery-btn"
                       >
                         <i className="fab fa-instagram"></i>
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div>

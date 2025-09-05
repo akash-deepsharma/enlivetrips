@@ -1,53 +1,118 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-// import 
-// import './notes.css';
+"use client";
+import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function RelatedYoutube() {
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
-const embad =[
+  const youtube_video = [
     {
-    video: `<iframe width="100%" height="250" src="https://www.youtube.com/embed/hYsQMHECt7k" title="BSF 🇮🇳Aarakshak ⚔️Rajeev Kumar #army #bsf #soilders #bsfparade #shortvideo #shorts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
-  },
+      video: "https://www.youtube.com/embed/hYsQMHECt7k",
+      thumb: "/img/gallery/gallery_9_1.jpg",
+    },
     {
-    video: `<iframe width="100%" height="250" src="https://www.youtube.com/embed/uT-irwBbnMM?si=lu6X642Tv7yXtRF2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
-  },
+      video: "https://www.youtube.com/embed/uT-irwBbnMM?si=lu6X642Tv7yXtRF2",
+      thumb: "/img/gallery/gallery_9_2.jpg",
+    },
     {
-    video: `<iframe width="100%" height="250" src="https://www.youtube.com/embed/cdeQ5d_I_ns" title="Rohit sharma and Shreyas iyer😂🤣 | #shorts #cricket #rohitsharma #shreyasiyer #dance" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
-  },
+      video: "https://www.youtube.com/embed/cdeQ5d_I_ns",
+      thumb: "/img/gallery/gallery_9_3.jpg",
+    },
     {
-    video: `<iframe width="100%" height="250" src="https://www.youtube.com/embed/hYsQMHECt7k" title="BSF 🇮🇳Aarakshak ⚔️Rajeev Kumar #army #bsf #soilders #bsfparade #shortvideo #shorts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
-  },
-]
+      video: "https://www.youtube.com/embed/hYsQMHECt7k",
+      thumb: "/img/gallery/gallery_9_4.jpg",
+    },
+    {
+      video: "https://www.youtube.com/embed/uT-irwBbnMM?si=lu6X642Tv7yXtRF2",
+      thumb: "/img/gallery/gallery_9_2.jpg",
+    },
+    {
+      video: "https://www.youtube.com/embed/cdeQ5d_I_ns",
+      thumb: "/img/gallery/gallery_9_3.jpg",
+    },
+    {
+      video: "https://www.youtube.com/embed/hYsQMHECt7k",
+      thumb: "/img/gallery/gallery_9_4.jpg",
+    },
+  ];
+
   return (
-    <div className="blog_box sdafgeefdsg lg:mt-[30px] md:mt-24 mt-24">
-      <div className="bt-container p-0">
-        <div className="blox-box-tilte text-center mb-16">
-        <p className='flex gap-3 items-center justify-center w-auto top-t text-capitalize'> <img src="/assets/png/youtube.png" alt="" /> Travelers On  Youtube</p>
-          <h2 className="text-[32px] md:text-[48px] lg:text-[60px] font-[500]">
-          Captured Journeys
+    <div
+      className="sidebar-gallery-area bg-smoke space position-relative"
+      style={{
+        backgroundImage: "url(/img/bg/shape_bg_1.png)",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="container-fluid">
+        <div className="title-area text-center">
+          <span className="sub-title">Travelers On  Youtube</span>
+          <h2 className="sec-title">
+            <i>
+              <FontAwesomeIcon icon={faYoutube} />
+            </i>{" "}
+            Captured Journeys
           </h2>
+          <h5>Reviews that make me Blush</h5>
+          <p className='text-center smp'>Testimonials, Reviews, Experiences, Virtual Tours & Much More</p>
         </div>
 
-        <div className="blog-row mt-2">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-10">
-            {embad.map((item, index) => (
-              <div className="mb-5" key={index}>
-                <div className="blog_right rounded-md overflow-hidden">
-                  <div className="blog_img w-full ">
-                    {/* Render YouTube iframe directly using dangerouslySetInnerHTML */}
-                    <div
-                      className="video-iframe"
-                      dangerouslySetInnerHTML={{
-                        __html: item.video || '',
-                      }}
-                    />
-                  </div>
+        <div className="slider-area">
+          <Swiper
+            loop={true}
+            touchRatio={1.2}
+            speed={1000}
+            modules={[Autoplay, Pagination]}
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            spaceBetween={20}
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              576: { slidesPerView: 2 },
+              768: { slidesPerView: 2 },
+              992: { slidesPerView: 3 },
+              1200: { slidesPerView: 4 },
+              1400: { slidesPerView: 6 },
+            }}
+            className="has-shadow"
+          >
+            {youtube_video.map((video, index) => (
+              <SwiperSlide key={index}>
+                <div className="gallery-thumb2">
+                  <img src={video.thumb} alt={`YouTube Video ${index + 1}`} style={{ cursor: "pointer" }}  onClick={() => setSelectedVideo(video.video)}/>
+                  <i className="gallery-btn" role="button" onClick={() => setSelectedVideo(video.video)}>
+                    <FontAwesomeIcon icon={faYoutube} />
+                  </i>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
+
+        {/* Popup Modal */}
+        {selectedVideo && (
+          <div id="login-form" className="popup-login-register mfp-hide" style={{maxWidth:"600px"}} onClick={() => setSelectedVideo(null)} >
+                       <div className=" bg-white rounded-xl overflow-hidden max-w-2xl" onClick={(e) => e.stopPropagation()}>
+                        <button className="closeButton border-0" onClick={() => setSelectedVideo(null)} >
+                          <FontAwesomeIcon icon={faTimes}/>
+                        </button>
+                        <iframe
+                          src={selectedVideo}
+                          width="100%"
+                          height="450"
+                          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                          allowFullScreen
+                          frameBorder="0"
+                        ></iframe>
+                      </div> 
+                    </div>
+        )}
       </div>
     </div>
   );
