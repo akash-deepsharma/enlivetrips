@@ -5,6 +5,93 @@ import UpcomingTripSection from "@/components/UpcomingTripSection/UpcomingTripSe
 import { getPagewithSection } from "@/services/pageSection";
 const mainpage = await getPagewithSection(4);
 
+<<<<<<< HEAD
+// This will act like your API response (static JSON for now)
+const tours = [
+  {
+    id: 1,
+    title: "Greece Tour Package",
+    image: "/img/tour/tour_box_1.jpg",
+    rating: 4.8,
+    price: 980,
+    duration: "7 Days",
+    days: ["1 Mar", "2 Apr", "3 May"],
+    slug:"trip-detail"
+  },
+  {
+    id: 2,
+    title: "Italy Tour Package",
+    image: "/img/tour/tour_box_2.jpg",
+    rating: 4.8,
+    price: 9800,
+    duration: "7 Days",
+    days: ["5 Mar", "10 Apr", "15 May"],
+  },
+  {
+    id: 3,
+    title: "Dubai Tour Package",
+    image: "/img/tour/tour_box_3.jpg",
+    rating: 4.8,
+    price: 9180,
+    duration: "7 Days",
+    days: ["1 Jan", "2 Feb", "3 Mar", "10 Jan", "20 Feb", "30 Mar"],
+  },
+  {
+    id: 4,
+    title: "Switzerland",
+    image: "/img/tour/tour_box_4.jpg",
+    rating: 4.8,
+    price: 980,
+    duration: "7 Days",
+    days: ["8 Jan", "12 Feb", "18 Mar"],
+  },
+  {
+    id: 5,
+    title: "Greece Tour Package",
+    image: "/img/tour/tour_box_5.jpg",
+    rating: 4.8,
+    price: 980,
+    duration: "7 Days",
+    days: ["1 Jun", "5 Jul", "10 Aug"],
+  },
+  {
+    id: 6,
+    title: "Italy Tour Package",
+    image: "/img/tour/tour_box_5.jpg",
+    rating: 4.8,
+    price: 980,
+    duration: "7 Days",
+    days: ["2 Sep", "6 Oct", "12 Nov"],
+  },
+  {
+    id: 7,
+    title: "Switzerland",
+    image: "/img/tour/tour_box_4.jpg",
+    rating: 4.8,
+    price: 980,
+    duration: "7 Days",
+    days: ["8 Jan", "12 Feb", "18 Mar"],
+  },
+  {
+    id: 8,
+    title: "Greece Tour Package",
+    image: "/img/tour/tour_box_5.jpg",
+    rating: 2.8,
+    price: 980,
+    duration: "7 Days",
+    days: ["1 Jun", "5 Jul", "10 Aug"],
+  },
+  {
+    id: 9,
+    title: "Italy Tour Package",
+    image: "/img/tour/tour_box_5.jpg",
+    rating: 4.8,
+    price: 980,
+    duration: "7 Days",
+    days: ["2 Sep", "6 Oct", "12 Nov"],
+  },
+];
+=======
 export async function generateMetadata({ params }) {
   // const { slug } = await params;
   return {
@@ -25,6 +112,7 @@ export async function generateMetadata({ params }) {
     },
   };
 }
+>>>>>>> 861b05d471a522fd2a506f6bfae26145d856fb51
 
 export default async function UpcomingTrips() {
   

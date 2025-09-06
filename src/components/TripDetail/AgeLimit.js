@@ -1,22 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import './notes.css'; // Optional: ensure you have styles here or use Tailwind
+import React, { useState, useEffect } from "react";
 
 // Dummy age limit data
 const dummyAgeLimit = [
   {
     id: 1,
-    title: 'Adults',
-    age_limit: '18 to 60 years',
+    title: "Backpacking Trips",
+    age_limit: "18 - 40",
   },
   {
     id: 2,
-    title: 'Children',
-    age_limit: '5 to 17 years',
+    title: "Weekend Getaways",
+    age_limit: "18 - 38",
   },
   {
     id: 3,
-    title: 'Infants',
-    age_limit: 'Below 5 years',
+    title: "Himalayan Treks",
+    age_limit: "18 - 48",
+  },
+  {
+    id: 4,
+    title: "Biking Trips",
+    age_limit: "18 - 45",
+  },
+  {
+    id: 6,
+    title: "Customized Trips",
+    age_limit: "No Limit",
   },
 ];
 
@@ -30,13 +39,19 @@ export default function AgeLimit() {
   }, []);
 
   return (
-    <div className="asdvasdvadfvasdvca">
-      <h6 className="text-left text-xl font-bold mb-4 aeadc">Age Limit</h6>
-      <div className="flex flex-wrap gap-4">
+    <div className="min_box-detail Age_limit container my-4">
+      <div className="title">
+        <h6 className="text-start fw-bold mb-4">Age Limit (Trip Wise) </h6>
+      </div>
+      <div className="row g-3 mt-3">
         {ageLimit.map((item) => (
-          <div key={item.id} className="asdcasdcrw flex-grow flex-shrink p-4 border rounded shadow">
-            <h2 className="text-lg font-semibold">{item.title}</h2>
-            <p className="text-gray-700">{item.age_limit}</p>
+          <div key={item.id} className="col">
+            <div className="card h-100 shadow-sm">
+              <div className="card-body text-center">
+                <h5 className="card-title">{item.title}</h5>
+                <p className="card-text ">{item.age_limit}</p>
+              </div>
+            </div>
           </div>
         ))}
       </div>

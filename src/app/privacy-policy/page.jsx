@@ -36,7 +36,7 @@ export default function PrivacyPolicy() {
               </div>
               <div class="page-content d-block">
                 <h3 class="box-title mt-20">
-                  <a href="resort-details">Ocean View Resort</a>
+                  <Link href="resort-details">Ocean View Resort</Link>
                 </h3>
                 <p class="blog-text mb-30">
                   This luxury resort is set on a private island in the South

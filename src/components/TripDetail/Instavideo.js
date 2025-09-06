@@ -28,11 +28,23 @@ export default function Instavideo() {
       instagram_link: `https://www.instagram.com/reel/DGN1r9eyxXH/embed`,
       thumb: "/img/gallery/gallery_9_4.jpg",
     },
+    {
+      instagram_link: `https://www.instagram.com/reel/DGN1r9eyxXH/embed`,
+      thumb: "/img/gallery/gallery_9_2.jpg",
+    },
+    {
+      instagram_link: `https://www.instagram.com/reel/DGN1r9eyxXH/embed`,
+      thumb: "/img/gallery/gallery_9_3.jpg",
+    },
+    {
+      instagram_link: `https://www.instagram.com/reel/DGN1r9eyxXH/embed`,
+      thumb: "/img/gallery/gallery_9_4.jpg",
+    },
   ];
 
   return (
     <div
-      className="sidebar-gallery-area bg-smoke space position-relative"
+      className="sidebar-gallery-area bg-smoke space pt-0 position-relative"
       style={{
         backgroundImage: "url(/img/bg/shape_bg_1.png)",
         backgroundSize: "cover",
@@ -41,13 +53,15 @@ export default function Instavideo() {
     >
       <div className="container-fluid">
         <div className="title-area text-center">
-          <span className="sub-title">We Are On Instagram</span>
+          <span className="sub-title">Travelers On Instagram</span>
           <h2 className="sec-title">
             <i>
               <FontAwesomeIcon icon={faInstagram} />
             </i>{" "}
-            Follow Us
+            Travel Reels
           </h2>
+          <h5>Reviews that make me Blush</h5>
+          <p className='text-center smp'>Testimonials, Reviews, Experiences, Virtual Tours & Much More</p>
         </div>
 
         <div className="slider-area">
@@ -92,15 +106,15 @@ export default function Instavideo() {
 
         {/* Popup Modal */}
         {selectedVideo && (
-          <div id="login-form" class="popup-login-register mfp-hide" onClick={() => setSelectedVideo(null)} >
-             <div className=" bg-white rounded-xl overflow-hidden w-[90%] max-w-2xl" onClick={(e) => e.stopPropagation()}>
-              <button class="closeButton border-0" onClick={() => setSelectedVideo(null)} >
+          <div id="login-form" className="popup-login-register mfp-hide" onClick={() => setSelectedVideo(null)} >
+             <div className=" bg-white rounded-xl overflow-hidden max-w-2xl" onClick={(e) => e.stopPropagation()}>
+              <button className="closeButton border-0" onClick={() => setSelectedVideo(null)} >
                 <FontAwesomeIcon icon={faTimes}/>
               </button>
               <iframe
                 src={selectedVideo}
                 width="100%"
-                height="500"
+                height="650"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 allowFullScreen
                 frameBorder="0"
