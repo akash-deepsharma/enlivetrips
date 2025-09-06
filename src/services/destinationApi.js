@@ -8,3 +8,11 @@ export async function getHomeDestination() {
     throw new Error(error.response?.data?.message || "Failed to fetch blogs");
   }
 }
+export async function getDestination() {
+  try {
+    const res = await api.get("/destinations");
+    return res.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || "Failed to fetch blogs");
+  }
+}

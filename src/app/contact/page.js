@@ -1,29 +1,55 @@
-'use client';
 import Image from "next/image";
-
 import ContactUsForm from "@/components/Contact/ContactUsForm";
 import Link from "next/link";
+import { getPagewithSection } from "@/services/pageSection";
+import { getDestination } from "@/services/destinationApi";
 
+const mainpage = await getPagewithSection(5);
 
-export default function Contact() {
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  return {
+    title: mainpage.meta_title,
+    description: mainpage.meta_description,
+    keywords: mainpage.meta_description,
+    openGraph: {
+      type: "website",
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
+      title: mainpage.meta_title,
+      description: mainpage.meta_description,
+      keywords: mainpage.meta_description,
+      // images: [{ url: page.image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: mainpage.meta_title,
+      description: mainpage.meta_description,
+      // images: [blog.blog.image],
+    },
+  };
+}
+export default async function Contact() {
   return (
     <>
         <div
       className="breadcumb-wrapper"
       style={{
-        backgroundImage: "url('/img/bg/breadcumb-bg.jpg')",
+        backgroundImage: `url('${
+            process.env.NEXT_PUBLIC_MEDIA_PATH +
+            mainpage.sections[0].section[0].data.image
+          }')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       <div className="container">
         <div className="breadcumb-content">
-          <h1 className="breadcumb-title">Contact Us</h1>
+          <h1 className="breadcumb-title">{mainpage.sections[0].section[1].data.Text}</h1>
           <ul className="breadcumb-menu">
             <li>
               <Link href="/">Home</Link>
             </li>
-            <li>Contact Us</li>
+            <li>{mainpage.sections[0].section[1].data.Text}</li>
           </ul>
         </div>
       </div>
@@ -57,10 +83,7 @@ export default function Contact() {
               <div className="about-contact-details">
                 <h6 className="box-title">Our Address</h6>
                 <p className="about-contact-details-text">
-                  2690 Hiltona Street Victoria
-                </p>
-                <p className="about-contact-details-text">
-                  Road, New York, Canada
+                  {mainpage.sections[1].section[0].data.Text}
                 </p>
               </div>
             </div>
@@ -80,10 +103,10 @@ export default function Contact() {
               <div className="about-contact-details">
                 <h6 className="box-title">Phone Number</h6>
                 <p className="about-contact-details-text">
-                  <Link href="tel:01234567890">+01 234 567 890</Link>
+                  <Link href={mainpage.sections[1].section[1].data.button_link}>{mainpage.sections[1].section[1].data.button_label}</Link>
                 </p>
                 <p className="about-contact-details-text">
-                  <Link href="tel:09876543210">+09 876 543 210</Link>
+                  <Link href={mainpage.sections[1].section[2].data.button_link}>{mainpage.sections[1].section[2].data.button_label}</Link>
                 </p>
               </div>
             </div>
@@ -103,10 +126,10 @@ export default function Contact() {
               <div className="about-contact-details">
                 <h6 className="box-title">Email Address</h6>
                 <p className="about-contact-details-text">
-                  <Link href="mailto:mailinfo00@tourm.com">mailinfo00@tourm.com</Link>
+                  <Link href={mainpage.sections[1].section[3].data.button_link}>{mainpage.sections[1].section[3].data.button_label}</Link>
                 </p>
                 <p className="about-contact-details-text">
-                  <Link href="mailto:support24@tourm.com">support24@tourm.com</Link>
+                  <Link href={mainpage.sections[1].section[4].data.button_link}>{mainpage.sections[1].section[4].data.button_label}</Link>
                 </p>
               </div>
             </div>
@@ -114,12 +137,9 @@ export default function Contact() {
         </div>
       </div>
     </div>
-
-
-
-        <ContactUsForm/>
+        <ContactUsForm heading={mainpage.sections[1].section[5].data.Text} banner={mainpage.sections[1].section[6].data.image} video={mainpage.sections[1].section[7].data.url} />
         <div className="">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3504.9659552373755!2d77.293161!3d28.540743!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce59fcff78a11%3A0x84ad5505ea9a7a0a!2sEnLive%20Trip%20Experiences%20Private%20Limited!5e0!3m2!1sen!2sin!4v1747032394923!5m2!1sen!2sin" width="100%" height="450" allowFullScreen ="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src={mainpage.sections[1].section[8].data.url} width="100%" height="450" allowFullScreen ="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </>
   )

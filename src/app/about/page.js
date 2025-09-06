@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
     description: mainpage.meta_description,
     keywords: mainpage.meta_description,
     openGraph: {
-      type: "article",
+      type: "website",
       url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
       title: mainpage.meta_title,
       description: mainpage.meta_description,

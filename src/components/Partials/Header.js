@@ -97,6 +97,9 @@ export default function Header() {
                     <li>
                       <Link href="/destination">Destination</Link>
                     </li>
+                    <li>
+                      <Link href="/contact">Contact Us</Link>
+                    </li>
                   </ul>
                 </nav>
 
